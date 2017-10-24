@@ -1,0 +1,34 @@
+<% provide(:title, "About") %>
+
+    <section id="terms" class="container">        
+
+      <div class="row">
+        <div class="col-lg-8">
+        <h2>What we are</h2>
+        <p><i>Sakafund</i> is the first place to turn when you or someone you love is facing a financial challenge. <br>
+        It’s the central rallying place for giving and receiving meaningful support.</p>
+
+        <p>&nbsp;</p>
+        <hr>
+
+      <p style="text-align: right;"><%= link_to "Start a Fundraiser",  new_project_path, class: "btn btn-success" %></p> 
+
+        </div>
+      
+      <div class="col-md-4">
+	  
+	   <ul class="tag-cloud">  
+	    <hr>  
+	    
+           <% Category.all.each do |category| %>
+           <li><%= link_to  category.name, category, class: "btn btn-default" %></li>
+           <% end %>   
+         </ul>  
+	   <hr>	
+	
+		
+	</div>       
+     </div>
+
+    </section><!--/#terms-->
+

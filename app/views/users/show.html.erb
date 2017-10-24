@@ -1,0 +1,17 @@
+<% provide(:title, @user.name) %>
+
+    <section id="terms" class="container">
+        <h3><%= @user.name %></h3>
+         <b>Projects: (<%= @user.projects.count %>)</b>
+        <% @projects.each do |project| %>
+	<h3><%= link_to  project.title, project %> </h3>
+	
+	<%= link_to "Edit", edit_project_path(project), class: "btn btn-default" %> | <%= link_to "Delete", project_path(project), method: :delete,
+	data: { confirm: "You sure?" }, class: "btn btn-default" %>
+	
+	<p><%= truncate(project.content, length: 50, separator: ''){ link_to 'Read More', project_path(project) } %></p>
+	<% end %>
+
+    </section>
+
+    </section><!--/#terms-->

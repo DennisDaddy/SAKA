@@ -1,0 +1,54 @@
+<% provide(:title, "Projects") %>
+
+
+<div class="container">
+
+   <div class="row">
+      <div class="col-md-12">
+         
+             <br>
+              <h3 align="center">Be the sun in someome's dark sky</h3>
+
+             
+              <hr>
+
+         <ul class="portfolio-filter">
+          <li><%= link_to "All", projects_path, class: "btn btn-default" %></li>  
+           <% Category.all.each do |category| %>
+
+           <li><%= link_to  category.name, category, class: "btn btn-default" %></li>
+           <% end %>   
+         </ul>             
+       </div>
+    </div>
+
+<div class="row">
+<% if (@projects.empty?) %> 
+      <p align="center">No projects!, be the first person to create one.</p> 
+      <br> 
+      
+
+    <% else %> 
+ <% @projects.each do |project| %>
+  <div class="col-sm-6 col-md-3">
+   <div class="media">                      
+     <div class="media-body">
+     <div class="thumbnail">
+    <p><%= image_tag project.picture.url, height: "120", width: "100%" %></p>
+    <strong><%= link_to project.title, project %></strong>
+
+    
+    <p><%= truncate(project.content.html_safe , length: 50, separator: ''){ link_to 'Read More', project_path(project) } %></p>
+    <p><b>Goal $:</b><%= project.project_goal %><br></p>
+    <p><%= link_to "Donate",  new_project_path, class: "btn btn-success" %></p> 
+    
+    </div>
+    </div>
+    </div>
+   
+  </div>
+  <% end %>
+  <% end %>
+</div>
+
+</div>

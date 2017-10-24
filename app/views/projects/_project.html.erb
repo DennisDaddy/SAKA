@@ -1,0 +1,41 @@
+
+    <section id="pricing">
+        <div class="container">
+            
+            <div id="pricing-table" class="row">
+                <div class="col-md-3 col-xs-6">
+                 <div class="thumbnail">               
+
+                <%= image_tag project.picture.url if project.picture? %>
+                  <strong><%= link_to project.title, project %></strong>
+                  <span class="timestamp">
+           <i><b>Posted <%= time_ago_in_words(project.created_at) %> ago.</b></i>
+
+				<% if current_user?(project.user) %>
+				<%= link_to "Delete", project, method: :delete,
+				data: { confirm: "You sure?" } %>
+				|  <%= link_to "Edit",edit_project_path(project) %>
+				<% end %>
+				</span>
+                 <p><%= truncate(project.content, length: 100, separator: ''){ link_to 'Read More', project_path(project) } %> </p>
+                  <div class="progress">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                            <span>HTML/CSS</span>
+                        </div>
+                    </div>
+
+                     <div class="progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                            <span>Wordpress</span>
+                        </div>
+                    </div>
+                    <hr>
+                 
+                </div>
+                </div><!--/.col-md-3-->
+                
+                
+                
+            </div> 
+        </div>
+    </section><!--/#pricing-->

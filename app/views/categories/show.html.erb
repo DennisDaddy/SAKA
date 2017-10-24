@@ -1,0 +1,56 @@
+
+<% provide(:title, "Categories") %>
+
+<section id="terms" class="container">
+<div class="row">
+  <div class="col-lg-8">
+	<h1><%= @category.name %></h1>
+	<hr>	
+	
+	<% @projects.each do |project| %>
+
+		<div class="col-sm-6 col-md-3">
+   <div class="media">                      
+     <div class="media-body">
+     <div class="thumbnail">
+    <p><%= image_tag project.picture.url, height: "120", width: "100%" %></p>
+    <strong><%= link_to project.title, project %></strong>
+    
+    <p><%= truncate(project.content, length: 50, separator: ''){ link_to 'Read More', project_path(project) } %></p>
+    
+    </div>
+    </div>
+    </div>
+   
+  </div>
+		<% end %> 
+
+		<% if (@projects.empty?) %> 
+		  <p>Sorry, so far we don't have projects in this category be the first person to create one.</p>  
+		  
+		
+		<% end %> 
+		<br>
+		
+	</div>
+
+
+	<div class="col-md-4">
+	
+	  <ul class="tag-cloud">  
+	    <h4 align="center">Categories</h4>
+	    <hr>	  
+	    
+           <% Category.all.each do |category| %>
+           <li><%= link_to  category.name, category, class: "btn btn-default" %></li>
+           <% end %>   
+         </ul>  
+	<hr>
+		
+	</div>    
+           
+
+	</div>
+
+
+ </section>

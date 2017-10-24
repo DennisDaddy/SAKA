@@ -1,0 +1,32 @@
+
+<% provide(:title, "Categories") %>
+<div class="container">
+
+   <div class="row">
+                <div class="col-md-12">
+                    <div class="center gap">
+                    
+                        <h3>All Categories</h3>
+                        
+                        <hr>
+                         
+                    </div>                
+                </div>
+
+    </div>
+
+<div class="row">
+<ul>
+ <% @categories.each do |category| %>
+ 
+ <li><%= link_to  category.name, category %></li>
+ <hr>
+
+
+  <% end %>
+  </ul>
+</div>
+
+</div>
+
+
